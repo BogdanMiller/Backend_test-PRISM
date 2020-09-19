@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows;
 
 namespace Backend_test_PRISM
@@ -55,8 +56,16 @@ namespace Backend_test_PRISM
 
 				var csv = new CsvFile<Card>();
 				csv.Write(fileName.Text, cardList);
+				Successful();
 			}
 			catch { }
+		}
+
+		private async void Successful()
+		{
+			b_Parse.Content = "SUCCESSFUL";
+			await Task.Delay(1000);
+			b_Parse.Content = "PARSE";
 		}
 	}
 }
